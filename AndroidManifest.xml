@@ -15,7 +15,5 @@
         </activity>
 
         <receiver android:process=":remote" android:name=".OneShotAlarm"/>
-
-        <receiver android:process=":remote" android:name=".RepeatingAlarm"/>
     </application>
 </manifest>

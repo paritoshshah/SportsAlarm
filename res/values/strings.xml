@@ -4,11 +4,7 @@
     <string name="app_name">Sports Alarm</string>
     <string name="alarm_controller">Sports Alarm</string>
     <string name="one_shot_alarm">One shot</string>
-    <string name="start_repeating_alarm">Start repeating alarm</string><string name="stop_repeating_alarm">Stop repeating alarm</string>
     
     <string name="one_shot_received">One shot received!</string>
-    <string name="repeating_received">Repeating received!</string>
     <string name="one_shot_scheduled">One shot scheduled!</string>
-    <string name="repeating_scheduled">Repeating scheduled</string>
-    <string name="repeating_unscheduled">Repeating unscheduled!</string>
 </resources>
