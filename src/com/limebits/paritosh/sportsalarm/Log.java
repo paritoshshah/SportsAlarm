@@ -18,9 +18,8 @@
  * package-level logging flag
  */
 
-package com.android.alarmclock;
+package com.limebits.paritosh.sportsalarm;
 
-import android.os.SystemClock;
 import android.util.Config;
 
 class Log {

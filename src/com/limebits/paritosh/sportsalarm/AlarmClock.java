@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.android.alarmclock;
+package com.limebits.paritosh.sportsalarm;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -45,6 +45,7 @@ import android.widget.TextView;
 
 import java.text.DateFormatSymbols;
 import java.util.Calendar;
+
 
 /**
  * AlarmClock application.
@@ -92,7 +93,8 @@ public class AlarmClock extends Activity implements OnItemClickListener {
             super(context, cursor);
         }
 
-        public View newView(Context context, Cursor cursor, ViewGroup parent) {
+        @Override
+		public View newView(Context context, Cursor cursor, ViewGroup parent) {
             View ret = mFactory.inflate(R.layout.alarm_time, parent, false);
 
             ((TextView) ret.findViewById(R.id.am)).setText(mAm);
@@ -104,7 +106,8 @@ public class AlarmClock extends Activity implements OnItemClickListener {
             return ret;
         }
 
-        public void bindView(View view, Context context, Cursor cursor) {
+        @Override
+		public void bindView(View view, Context context, Cursor cursor) {
             final Alarm alarm = new Alarm(cursor);
 
             CheckBox onButton = (CheckBox) view.findViewById(R.id.alarmButton);
@@ -301,7 +304,7 @@ public class AlarmClock extends Activity implements OnItemClickListener {
         // Use the current item to create a custom view for the header.
         final AdapterContextMenuInfo info = (AdapterContextMenuInfo) menuInfo;
         final Cursor c =
-                (Cursor) mAlarmsList.getAdapter().getItem((int) info.position);
+                (Cursor) mAlarmsList.getAdapter().getItem(info.position);
         final Alarm alarm = new Alarm(c);
 
         // Construct the Calendar to compute the time.

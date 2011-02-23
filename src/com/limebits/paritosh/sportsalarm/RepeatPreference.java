@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.android.alarmclock;
+package com.limebits.paritosh.sportsalarm;
 
 import android.app.AlertDialog.Builder;
 import android.content.Context;

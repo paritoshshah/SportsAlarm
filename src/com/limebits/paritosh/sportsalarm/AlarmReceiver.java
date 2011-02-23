@@ -14,21 +14,21 @@
  * limitations under the License.
  */
 
-package com.android.alarmclock;
+package com.limebits.paritosh.sportsalarm;
 
 import android.app.KeyguardManager;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
-import android.content.ContentUris;
 import android.content.Context;
 import android.content.Intent;
 import android.content.BroadcastReceiver;
-import android.database.Cursor;
 import android.os.Parcel;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+
+
 
 /**
  * Glue class: connects AlarmAlert IntentReceiver to AlarmAlert

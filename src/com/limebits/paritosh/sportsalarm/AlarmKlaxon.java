@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.android.alarmclock;
+package com.limebits.paritosh.sportsalarm;
 
 import android.app.Service;
 import android.content.Context;
@@ -26,7 +26,6 @@ import android.media.MediaPlayer;
 import android.media.MediaPlayer.OnErrorListener;
 import android.media.RingtoneManager;
 import android.net.Uri;
-import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.Message;
@@ -56,7 +55,8 @@ public class AlarmKlaxon extends Service {
     // Internal messages
     private static final int KILLER = 1000;
     private Handler mHandler = new Handler() {
-        public void handleMessage(Message msg) {
+        @Override
+		public void handleMessage(Message msg) {
             switch (msg.what) {
                 case KILLER:
                     if (Log.LOGV) {

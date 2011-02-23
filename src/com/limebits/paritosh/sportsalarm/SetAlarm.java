@@ -14,7 +14,9 @@
  * limitations under the License.
  */
 
-package com.android.alarmclock;
+package com.limebits.paritosh.sportsalarm;
+
+
 
 import android.app.TimePickerDialog;
 import android.content.Context;
@@ -275,7 +277,8 @@ public class SetAlarm extends PreferenceActivity
         return String.format(formats[index], daySeq, hourSeq, minSeq);
     }
 
-    public boolean onCreateOptionsMenu(Menu menu) {
+    @Override
+	public boolean onCreateOptionsMenu(Menu menu) {
         super.onCreateOptionsMenu(menu);
 
         mDeleteAlarmItem = menu.add(0, 0, 0, R.string.delete_alarm);
@@ -288,7 +291,8 @@ public class SetAlarm extends PreferenceActivity
         return true;
     }
 
-    public boolean onOptionsItemSelected(MenuItem item) {
+    @Override
+	public boolean onOptionsItemSelected(MenuItem item) {
         if (item == mDeleteAlarmItem) {
             Alarms.deleteAlarm(this, mId);
             finish();

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.android.alarmclock;
+package com.limebits.paritosh.sportsalarm;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -33,6 +33,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.Calendar;
+
+
 
 /**
  * Displays the time

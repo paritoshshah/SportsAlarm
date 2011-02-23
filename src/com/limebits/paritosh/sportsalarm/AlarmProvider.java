@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.android.alarmclock;
+package com.limebits.paritosh.sportsalarm;
 
 import android.content.ContentProvider;
 import android.content.ContentUris;
@@ -38,8 +38,8 @@ public class AlarmProvider extends ContentProvider {
             UriMatcher.NO_MATCH);
 
     static {
-        sURLMatcher.addURI("com.android.alarmclock", "alarm", ALARMS);
-        sURLMatcher.addURI("com.android.alarmclock", "alarm/#", ALARMS_ID);
+        sURLMatcher.addURI("com.limebits.paritosh.sportsalarm", "alarm", ALARMS);
+        sURLMatcher.addURI("com.limebits.paritosh.sportsalarm", "alarm/#", ALARMS_ID);
     }
 
     private static class DatabaseHelper extends SQLiteOpenHelper {
@@ -209,7 +209,8 @@ public class AlarmProvider extends ContentProvider {
         return newUrl;
     }
 
-    public int delete(Uri url, String where, String[] whereArgs) {
+    @Override
+	public int delete(Uri url, String where, String[] whereArgs) {
         SQLiteDatabase db = mOpenHelper.getWritableDatabase();
         int count;
         long rowId = 0;

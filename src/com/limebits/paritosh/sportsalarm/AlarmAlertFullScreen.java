@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.android.alarmclock;
+package com.limebits.paritosh.sportsalarm;
 
 import android.app.Activity;
 import android.app.Notification;
@@ -25,7 +25,6 @@ import android.content.BroadcastReceiver;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
-import android.content.res.Configuration;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.KeyEvent;
@@ -39,6 +38,7 @@ import android.widget.Toast;
 import android.widget.TextView;
 
 import java.util.Calendar;
+
 
 /**
  * Alarm Clock alarm alert: pops visible indicator and plays alarm

@@ -14,9 +14,10 @@
  * limitations under the License.
  */
 
-package com.android.alarmclock;
+package com.limebits.paritosh.sportsalarm;
 
-import android.content.SharedPreferences;
+
+
 import android.media.AudioManager;
 import android.media.RingtoneManager;
 import android.net.Uri;
@@ -26,7 +27,6 @@ import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceScreen;
-import android.preference.RingtonePreference;
 import android.provider.Settings;
 
 /**

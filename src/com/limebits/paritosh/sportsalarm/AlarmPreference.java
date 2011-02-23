@@ -14,7 +14,9 @@
  * limitations under the License.
  */
 
-package com.android.alarmclock;
+package com.limebits.paritosh.sportsalarm;
+
+
 
 import android.content.Context;
 import android.media.Ringtone;

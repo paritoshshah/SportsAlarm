@@ -14,7 +14,9 @@
  * limitations under the License.
  */
 
-package com.android.alarmclock;
+package com.limebits.paritosh.sportsalarm;
+
+
 
 import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
@@ -29,7 +31,8 @@ import android.widget.RemoteViews;
 public class AnalogAppWidgetProvider extends BroadcastReceiver {
     static final String TAG = "AnalogAppWidgetProvider";
 
-    public void onReceive(Context context, Intent intent) {
+    @Override
+	public void onReceive(Context context, Intent intent) {
         String action = intent.getAction();
 
         if (AppWidgetManager.ACTION_APPWIDGET_UPDATE.equals(action)) {

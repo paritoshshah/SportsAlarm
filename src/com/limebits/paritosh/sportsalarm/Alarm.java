@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.android.alarmclock;
+package com.limebits.paritosh.sportsalarm;
 
 import android.content.Context;
 import android.database.Cursor;
@@ -23,10 +23,9 @@ import android.net.Uri;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.provider.BaseColumns;
-import android.text.format.DateFormat;
-
 import java.text.DateFormatSymbols;
 import java.util.Calendar;
+
 
 public final class Alarm implements Parcelable {
 
@@ -72,7 +71,7 @@ public final class Alarm implements Parcelable {
          * The content:// style URL for this table
          */
         public static final Uri CONTENT_URI =
-                Uri.parse("content://com.android.alarmclock/alarm");
+                Uri.parse("content://com.limebits.paritosh.sportsalarm/alarm");
 
         /**
          * Hour in 24-hour localtime 0 - 23.
