@@ -38,7 +38,7 @@ import java.text.DateFormatSymbols;
  * The Alarms provider supplies info about Alarm Clock settings
  */
 public class Alarms {
-
+	public static final String ACTION_ALARM_CHANGED = "android.intent.action.ALARM_CHANGED";
     // This action triggers the AlarmReceiver as well as the AlarmKlaxon. It
     // is a public action used in the manifest for receiving Alarm broadcasts
     // from the alarm manager.
@@ -460,7 +460,7 @@ public class Alarms {
      * Tells the StatusBar whether the alarm is enabled or disabled
      */
     private static void setStatusBarIcon(Context context, boolean enabled) {
-        Intent alarmChanged = new Intent(Intent.ACTION_ALARM_CHANGED);
+        Intent alarmChanged = new Intent(ACTION_ALARM_CHANGED);
         alarmChanged.putExtra("alarmSet", enabled);
         context.sendBroadcast(alarmChanged);
     }
