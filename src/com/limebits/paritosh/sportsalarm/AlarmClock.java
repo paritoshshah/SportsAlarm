@@ -40,6 +40,7 @@ import android.widget.AdapterView.AdapterContextMenuInfo;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.CheckBox;
 import android.widget.CursorAdapter;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -230,7 +231,8 @@ public class AlarmClock extends Activity implements OnItemClickListener {
     private void updateLayout() {
         setContentView(R.layout.alarm_clock);
         mAlarmsList = (ListView) findViewById(R.id.alarms_list);
-        mAlarmsList.setAdapter(new AlarmTimeAdapter(this, mCursor));
+        String[] fixtures = new Fixtures().toArray();
+        mAlarmsList.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, fixtures));
         mAlarmsList.setVerticalScrollBarEnabled(true);
         mAlarmsList.setOnItemClickListener(this);
         mAlarmsList.setOnCreateContextMenuListener(this);
