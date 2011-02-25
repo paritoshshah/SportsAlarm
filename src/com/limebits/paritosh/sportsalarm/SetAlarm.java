@@ -115,8 +115,8 @@ public class SetAlarm extends PreferenceActivity
 
         // Grab the content view so we can modify it.
         FrameLayout content = (FrameLayout) getWindow().getDecorView()
-                .findViewById(R.id.base_layout);
-
+                .findViewById(android.R.id.content);
+        
         // Get the main ListView and remove it from the content view.
         ListView lv = getListView();
         content.removeView(lv);
