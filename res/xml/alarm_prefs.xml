@@ -16,7 +16,8 @@
 
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
         android:title="@string/set_alarm">
-    <Preference android:key="time" 
+    <com.limebits.paritosh.sportsalarm.TimePreference 
+    	android:key="time" 
         android:persistent="false"
         android:title="@string/time"/>
     <com.limebits.paritosh.sportsalarm.AlarmPreference
@@ -29,12 +30,4 @@
     <CheckBoxPreference android:key="vibrate" 
         android:persistent="false"
         android:title="@string/alarm_vibrate"/>
-    <com.limebits.paritosh.sportsalarm.RepeatPreference
-        android:persistent="false"
-        android:key="setRepeat" 
-        android:title="@string/alarm_repeat" />
-    <EditTextPreference android:key="label"
-        android:persistent="false"
-        android:title="@string/label"
-        android:dialogTitle="@string/label" />
 </PreferenceScreen>

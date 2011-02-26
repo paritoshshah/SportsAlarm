@@ -18,16 +18,12 @@ package com.limebits.paritosh.sportsalarm;
 
 
 
-import android.app.TimePickerDialog;
+
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.preference.CheckBoxPreference;
-import android.preference.EditTextPreference;
-import android.preference.Preference;
 import android.preference.PreferenceActivity;
-import android.preference.PreferenceScreen;
-import android.text.format.DateFormat;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -37,20 +33,17 @@ import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.TimePicker;
 import android.widget.Toast;
 
 /**
  * Manages each alarm
  */
-public class SetAlarm extends PreferenceActivity
-        implements TimePickerDialog.OnTimeSetListener {
+public class SetAlarm extends PreferenceActivity {
 
-    private EditTextPreference mLabel;
-    private Preference mTimePref;
+    private TimePreference mTimePref;
     private AlarmPreference mAlarmPref;
     private CheckBoxPreference mVibratePref;
-    private RepeatPreference mRepeatPref;
+
     private MenuItem mDeleteAlarmItem;
     private MenuItem mTestAlarmItem;
 
@@ -70,21 +63,10 @@ public class SetAlarm extends PreferenceActivity
         addPreferencesFromResource(R.xml.alarm_prefs);
 
         // Get each preference so we can retrieve the value later.
-        mLabel = (EditTextPreference) findPreference("label");
-        mLabel.setOnPreferenceChangeListener(
-                new Preference.OnPreferenceChangeListener() {
-                    public boolean onPreferenceChange(Preference p,
-                            Object newValue) {
-                        // Set the summary based on the new label.
-                        p.setSummary((String) newValue);
-                        return true;
-                    }
-                });
-        mTimePref = findPreference("time");
+        mTimePref = (TimePreference) findPreference("time");
         mAlarmPref = (AlarmPreference) findPreference("alarm");
         mVibratePref = (CheckBoxPreference) findPreference("vibrate");
-        mRepeatPref = (RepeatPreference) findPreference("setRepeat");
-
+        
         Intent i = getIntent();
         mId = i.getIntExtra(Alarms.ALARM_ID, -1);
         if (Log.LOGV) {
@@ -92,6 +74,8 @@ public class SetAlarm extends PreferenceActivity
         }
 
         /* load alarm details from database */
+        
+        /*
         Alarm alarm = Alarms.getAlarm(getContentResolver(), mId);
         // Bad alarm, bail to avoid a NPE.
         if (alarm == null) {
@@ -99,15 +83,12 @@ public class SetAlarm extends PreferenceActivity
             return;
         }
         mEnabled = alarm.enabled;
-        mLabel.setText(alarm.label);
-        mLabel.setSummary(alarm.label);
         mHour = alarm.hour;
         mMinutes = alarm.minutes;
-        mRepeatPref.setDaysOfWeek(alarm.daysOfWeek);
         mVibratePref.setChecked(alarm.vibrate);
         // Give the alert uri to the preference.
         mAlarmPref.setAlert(alarm.alert);
-        updateTime();
+        updateTime();*/
 
         // We have to do this to get the save/cancel buttons to highlight on
         // their own.
@@ -160,43 +141,16 @@ public class SetAlarm extends PreferenceActivity
     }
 
     @Override
-    public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen,
-            Preference preference) {
-        if (preference == mTimePref) {
-            new TimePickerDialog(this, this, mHour, mMinutes,
-                    DateFormat.is24HourFormat(this)).show();
-        }
-
-        return super.onPreferenceTreeClick(preferenceScreen, preference);
-    }
-
-    @Override
     public void onBackPressed() {
         saveAlarm();
         finish();
     }
 
-    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-        mHour = hourOfDay;
-        mMinutes = minute;
-        updateTime();
-        // If the time has been changed, enable the alarm.
-        mEnabled = true;
-    }
-
-    private void updateTime() {
-        if (Log.LOGV) {
-            Log.v("updateTime " + mId);
-        }
-        mTimePref.setSummary(Alarms.formatTime(this, mHour, mMinutes,
-                mRepeatPref.getDaysOfWeek()));
-    }
-
     private void saveAlarm() {
         final String alert = mAlarmPref.getAlertString();
         long time = Alarms.setAlarm(this, mId, mEnabled, mHour, mMinutes,
-                mRepeatPref.getDaysOfWeek(), mVibratePref.isChecked(),
-                mLabel.getText(), alert);
+                new Alarm.DaysOfWeek(0), mVibratePref.isChecked(),
+                "", alert);
 
         if (mEnabled) {
             popAlarmSetToast(this, time);
@@ -325,8 +279,8 @@ public class SetAlarm extends PreferenceActivity
         int minutes = (nowMinute + 1) % 60;
         int hour = nowHour + (nowMinute == 0 ? 1 : 0);
 
-        saveAlarm(this, mId, true, hour, minutes, mRepeatPref.getDaysOfWeek(),
-                true, mLabel.getText(), mAlarmPref.getAlertString(), true);
+        saveAlarm(this, mId, true, hour, minutes, new Alarm.DaysOfWeek(0),
+                true, "", mAlarmPref.getAlertString(), true);
     }
 
 }

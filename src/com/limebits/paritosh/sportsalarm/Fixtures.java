@@ -46,7 +46,7 @@ public class Fixtures {
                 Node match = matches.item(i);
                 NodeList properties = match.getChildNodes();
                 
-                String team1 = "", team2 = "";
+                String team1 = "", team2 = "", state = "";
              
                 for (int j=0; j<properties.getLength(); j++){
                     Node property = properties.item(j);
@@ -55,10 +55,15 @@ public class Fixtures {
                         team1 = property.getFirstChild().getNodeValue();
                     } else if (name.equalsIgnoreCase("team2")){
                         team2 = property.getFirstChild().getNodeValue();
-                    } 
+                    } else if (name.equalsIgnoreCase("state")) {
+                    	state = property.getFirstChild().getNodeValue();
+                    }
                 }
                 
-                fixtures.add(team1 + " vs. " + team2);
+                if (state.equalsIgnoreCase("preview")) {
+                	fixtures.add(team1 + " vs. " + team2);	
+                }
+                
             }
         } catch (Exception e) {
             throw new RuntimeException(e);
